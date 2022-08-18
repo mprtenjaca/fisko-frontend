@@ -219,8 +219,7 @@ export const dashboardPanelChart1 = (data) => {
           display: true,
         },
         subtitle: {
-          display: true,
-          text: "Marko",
+          display: true
         },
         tooltips: {
           backgroundColor: "#fff",
@@ -477,10 +476,7 @@ export const dashboardAllProductsChart = (data) => {
 // #############################
 
 export const dashboard24HoursPerformanceChart = (data) => {
-
-
-  console.log(data)
-
+  
   return {
     data: (canvas) => {
       var ctx = canvas.getContext("2d");

@@ -121,7 +121,6 @@ const InputInvoice = () => {
   }, [inputInvoiceRed.inputInvoices]);
 
   const handleOutputInvoiceEdit = (data) => (e) => {
-    console.log(data);
     setInputInvoiceData(data);
     setIsEditedInputInvoice(true);
     window.scrollTo(0,0)
@@ -157,7 +156,6 @@ const InputInvoice = () => {
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setInputInvoiceData({ ...inputInvoiceData, [name]: value });
-    console.log(inputInvoiceData);
   };
 
   // Confirmation dialog
@@ -187,8 +185,6 @@ const InputInvoice = () => {
     e.preventDefault();
     setFromErrors(inputInvoiceValidation(inputInvoiceData));
 
-    console.log(Object.keys(inputInvoiceValidation(inputInvoiceData)).length);
-
     if (Object.keys(inputInvoiceValidation(inputInvoiceData)).length === 0) {
       dispatch(createInputInvoice(inputInvoiceData));
       setInputInvoiceData(initialInputInvoiceDataState);
@@ -203,7 +199,6 @@ const InputInvoice = () => {
 
   return (
     <>
-      {console.log(inputInvoiceRed.inputInvoices)}
       <ReactNotificationAlert ref={notificationAlert} />
       <PanelHeader size="sm" />
       <div className="content">

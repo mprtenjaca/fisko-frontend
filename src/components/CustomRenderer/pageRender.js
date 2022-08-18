@@ -4,10 +4,7 @@ import { useParams } from 'react-router-dom';
 
 const generatePage = (pageName) => {
 
-    console.log(pageName)
-
     pageName = pageName.charAt(0).toUpperCase() + pageName.slice(1);
-    console.log(pageName)
     
     const component = () => require(`../../views/${pageName}.js`).default;
 
@@ -22,7 +19,6 @@ const PageRender = () => {
     const {page, id} = useParams();
     const {auth} = useSelector(state => state);
 
-    console.log("RENDER")
     let pageName = "";
 
     if(auth.token){

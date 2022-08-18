@@ -22,7 +22,6 @@ const PDFFileView = (props) => {
 
   const checkForProps = () => {
 
-    console.log(companyRed.company)
     if (!props.location.state) {
       history.push("/");
     }

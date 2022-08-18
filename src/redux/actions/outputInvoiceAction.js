@@ -20,7 +20,6 @@ export const getOutputInvoices = (auth) => async (dispatch) => {
     dispatch({ type: OUTPUT_INVOICE_TYPES.LOADING_OUTPUT_INVOICES, payload: true });
 
     const res = await axios.get("/api/output-invoice/admin/" + auth.user.id, config);
-    console.log(res.data)
 
     dispatch({
       type: OUTPUT_INVOICE_TYPES.GET_OUTPUT_INVOICE,

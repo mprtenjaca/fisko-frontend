@@ -9,7 +9,7 @@ export const login = (data) => async (dispatch) => {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
     const res = await axios.post("/login", { username, password });
 
-    console.log(res.data.access_token)
+    // console.log(res.data.access_token)
     dispatch({
       type: GLOBALTYPES.AUTH,
       payload: {
@@ -37,23 +37,10 @@ export const login = (data) => async (dispatch) => {
 };
 
 export const register = (data) => async (dispatch) => {
-  // const username = data.username;
-  // const password = data.password;
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
     const res = await axios.post("/auth/registration", data);
 
-    //console.log(res.data.access_token)
-    // dispatch({
-    //   type: GLOBALTYPES.AUTH,
-    //   payload: {
-    //     token: res.data.access_token,
-    //     user: res.data.user,
-    //   },
-    // });
-
-    // localStorage.setItem("login", true);
-    // localStorage.setItem("tkn_fisco", res.data.access_token);
     dispatch({
       type: GLOBALTYPES.ALERT,
       payload: {
@@ -82,7 +69,6 @@ export const refreshToken = () => async (dispatch) => {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
     try {
       const res = await axios.get("/auth/token/refresh", config);
-      console.log("Refresh token!");
       
       dispatch({
         type: GLOBALTYPES.AUTH,

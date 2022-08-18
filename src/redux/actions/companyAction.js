@@ -53,9 +53,7 @@ export const createCompany = (data) => async (dispatch) => {
     dispatch({ type: COMPANY_TYPES.LOADING_COMPANY, payload: { loading: true } });
 
     const res = await axios.post("/api/company", data, config);
-
-    console.log(res.data)
-
+    
     dispatch({
       type: COMPANY_TYPES.CREATE_COMPANY,
       payload: res.data,

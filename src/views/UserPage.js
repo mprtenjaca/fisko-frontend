@@ -100,7 +100,6 @@ const User = () => {
   const handleUserChangeInput = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
-    console.log(userData);
   };
 
   const handleCompanyChangeInput = (e) => {
@@ -111,7 +110,7 @@ const User = () => {
     }else{
       setCompanyData({ ...companyData, [name]: value });
     }
-    console.log(companyData);
+    
   };
 
   const handleUserSubmit = (e) => {
@@ -127,7 +126,6 @@ const User = () => {
 
   return (
     <>
-      {console.log(companyData)}
       <ReactNotificationAlert ref={notificationAlert} />
       <PanelHeader size="sm" />
       <div className="content">

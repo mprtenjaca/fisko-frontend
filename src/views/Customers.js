@@ -105,7 +105,6 @@ const Customers = () => {
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setCustomerData({ ...customerData, [name]: value });
-    console.log(customerData);
   };
 
   const handleCustomerEdit = (data) => (e) => {
@@ -148,7 +147,6 @@ const Customers = () => {
 
   return (
     <>
-    {console.log(customersRed.customers)}
       <ReactNotificationAlert ref={notificationAlert} />
       <PanelHeader size="sm" />
       <div className="content">

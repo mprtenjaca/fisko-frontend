@@ -20,7 +20,6 @@ export const getOffers = (auth) => async (dispatch) => {
     dispatch({ type: OFFER_TYPES.LOADING_OFFERS, payload: true });
 
     const res = await axios.get("/api/offer/admin/" + auth.user.id, config);
-    console.log(res.data)
 
     dispatch({
       type: OFFER_TYPES.GET_OFFER,

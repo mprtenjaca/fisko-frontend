@@ -56,7 +56,6 @@ const Services = () => {
   const { serviceNumber, serviceName } = serviceData;
 
   useEffect(() => {
-    console.log(serviceRed.services)
     setServices(serviceRed.services);
   }, [serviceRed.services]);
 
@@ -86,7 +85,6 @@ const Services = () => {
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setServiceData({ ...serviceData, [name]: value });
-    console.log(serviceData);
   };
 
   const handleServiceEdit = (data) => (e) => {

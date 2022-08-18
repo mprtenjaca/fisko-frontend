@@ -36,7 +36,6 @@ const Register = () => {
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
-    console.log(userData);
   };
 
   const handleSubmit = (e) => {

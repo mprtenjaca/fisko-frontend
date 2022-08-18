@@ -51,13 +51,11 @@ const Login = () => {
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setLoginData({ ...loginData, [name]: value });
-    console.log(loginData);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(username);
     dispatch(login(loginData));
     setLoginData(initialLoginState);
     setSuccess(true);

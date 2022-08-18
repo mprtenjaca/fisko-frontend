@@ -49,7 +49,6 @@ const App = () => {
             <Route exact path="/">
               <Redirect to="/login" />
             </Route>
-            {console.log(history.location)}
             { auth.token ? (
               <Route path="/admin" render={(props) => <Admin {...props} />} />
             ) : (

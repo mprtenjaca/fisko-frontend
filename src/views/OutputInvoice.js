@@ -256,7 +256,6 @@ const OutputInvoice = () => {
       });
     }
 
-    console.log(outputInvoiceData);
   };
 
   const handleOutputInvoiceEdit = (data) => (e) => {
@@ -329,7 +328,6 @@ const OutputInvoice = () => {
 
   return (
     <>
-      {console.log(outputInvoiceData)}
       <ReactNotificationAlert  ref={notificationAlert}/>
       <PanelHeader size="sm" />
       <div className="content" >

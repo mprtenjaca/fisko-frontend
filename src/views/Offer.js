@@ -233,7 +233,6 @@ const Offer = () => {
       });
     }
 
-    console.log(offerData);
   };
 
   const handleOfferEdit = (data) => (e) => {
@@ -297,7 +296,6 @@ const Offer = () => {
 
   return (
     <>
-      {console.log(offerList)}
       <ReactNotificationAlert ref={notificationAlert} />
       <PanelHeader size="sm" />
       <div className="content">
