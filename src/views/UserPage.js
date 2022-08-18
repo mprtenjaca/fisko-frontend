@@ -231,9 +231,9 @@ const User = () => {
               <CardBody>
                 <Form onSubmit={handleComapnySubmit}>
                   <Row>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
-                        <label>Ime firme</label>
+                        <label>Ime poduzeća</label>
                         <Input
                           placeholder="Ime firme"
                           type="text"
@@ -244,7 +244,7 @@ const User = () => {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="px-1" md="3">
+                    <Col className="px-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>OIB</label>
                         <Input
@@ -257,7 +257,7 @@ const User = () => {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>E-mail</label>
                         <Input
@@ -270,7 +270,7 @@ const User = () => {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="3">
+                    <Col className="pl-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Adresa</label>
                         <Input
@@ -285,7 +285,7 @@ const User = () => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col className="pl-1" md="3">
+                    <Col className="pl-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Grad</label>
                         <Input
@@ -298,7 +298,7 @@ const User = () => {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="3">
+                    <Col className="pl-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Poštanski broj</label>
                         <Input
@@ -311,7 +311,7 @@ const User = () => {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="3">
+                    <Col className="pl-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Kontakt broj</label>
                         <Input
@@ -324,7 +324,7 @@ const User = () => {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="3">
+                    <Col className="pl-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Web stranica</label>
                         <Input
@@ -339,7 +339,7 @@ const User = () => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col className="pl-1" md="3">
+                    <Col className="pl-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Porez. stopa</label>
                         <Input
@@ -352,7 +352,7 @@ const User = () => {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="3">
+                    <Col className="pl-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Napomena (opcionalno)</label>
                         <Input
@@ -365,7 +365,7 @@ const User = () => {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="3">
+                    <Col className="pl-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Dodatna napomena (opcionalno)</label>
                         <Input

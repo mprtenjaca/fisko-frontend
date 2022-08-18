@@ -5,14 +5,9 @@ export const login = (data) => async (dispatch) => {
   const username = data.username;
   const password = data.password;
 
-  const config = {
-    headers: { 'Access-Control-Allow-Origin': '*' },
-  };
-  
-
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-    const res = await axios.post("/login", { username, password }, config);
+    const res = await axios.post("/login", { username, password });
 
     console.log(res.data.access_token)
     dispatch({

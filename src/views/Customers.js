@@ -176,7 +176,7 @@ const Customers = () => {
               <CardBody>
                 <Form onSubmit={handleSubmit}>
                   <Row>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Ime</label>
                         <Input
@@ -189,7 +189,7 @@ const Customers = () => {
                         {/* <p className="error">{formErrors.firstName}</p> */}
                       </FormGroup>
                     </Col>
-                    <Col className="px-1" md="3">
+                    <Col className="px-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Prezime</label>
                         <Input
@@ -202,7 +202,7 @@ const Customers = () => {
                         {/* <p className="error">{formErrors.lastName}</p> */}
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Firma</label>
                         <Input
@@ -215,7 +215,7 @@ const Customers = () => {
                         <p className="error">{formErrors.companyName}</p>
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>E-mail</label>
                         <Input
@@ -230,7 +230,7 @@ const Customers = () => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col className="pl-1" md="3">
+                    <Col className="pl-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>OIB</label>
                         <Input
@@ -243,11 +243,11 @@ const Customers = () => {
                         <p className="error">{formErrors.oib}</p>
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="3">
+                    <Col className="pl-1" md="3" sm="6" xs="6">
                       <FormGroup>
-                        <label htmlFor="exampleInputEmail1">Address</label>
+                        <label htmlFor="exampleInputEmail1">Addresa</label>
                         <Input
-                          placeholder="Address"
+                          placeholder="Addresa"
                           type="text"
                           onChange={handleChangeInput}
                           value={address}
@@ -256,7 +256,7 @@ const Customers = () => {
                         <p className="error">{formErrors.address}</p>
                       </FormGroup>
                     </Col>
-                    <Col className="pl-1" md="3">
+                    <Col className="pl-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Grad</label>
                         <Input
@@ -269,7 +269,7 @@ const Customers = () => {
                         <p className="error">{formErrors.city}</p>
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Poštanski broj</label>
                         <Input
@@ -285,7 +285,7 @@ const Customers = () => {
                     
                   </Row>
                   <Row>
-                    <Col md="3">
+                    <Col md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Država</label>
                         <Input
@@ -298,7 +298,7 @@ const Customers = () => {
                         <p className="error">{formErrors.country}</p>
                       </FormGroup>
                     </Col>
-                    <Col md="3">
+                    <Col md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Mobitel</label>
                         <Input
@@ -311,7 +311,7 @@ const Customers = () => {
                         <p className="error">{formErrors.phoneNumber}</p>
                       </FormGroup>
                     </Col>
-                    <Col md="3">
+                    <Col md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Fax</label>
                         <Input

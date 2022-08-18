@@ -97,8 +97,10 @@
         }
 
         .navbar-toggle{
+            box-shadow: none !important;
             .navbar-toggler{
                 padding-left: 0;
+                box-shadow: none !important;
             }
 
             &:hover{
@@ -106,11 +108,17 @@
                     width: 22px;
                 }
             }
+
+            &:focus {
+                box-shadow: none !important;
+            }
         }
     }
 
 
-
+    .navbar-toggler:focus{
+        box-shadow: none !important;
+    }
     .navbar-nav{
         &.navbar-logo{
             position: absolute;

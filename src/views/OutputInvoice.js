@@ -103,7 +103,7 @@ const OutputInvoice = () => {
     paymentMethod: "",
     finalPrice: 0,
     dateAndTime: "",
-    deliveryDate: "2022-07-18",
+    deliveryDate: "",
   };
 
   const notificationAlert = useRef();
@@ -129,10 +129,21 @@ const OutputInvoice = () => {
     deliveryDate,
   } = outputInvoiceData;
 
+  const date = new Date();
+  const futureDate = date.getDate() + 15;
+  date.setDate(futureDate);
+  const inoviceFutureDate = date.toLocaleDateString("en-CA");
+
   useEffect(() => {
     setOutputInvoices(outputInvoiceRed.outputInvoices);
     setCustomers(customersRed.customers);
     setServicesData(serviceRed.services);
+
+    setOutputInvoiceData({
+      ...outputInvoiceData,
+      deliveryDate: inoviceFutureDate
+    });
+
   }, [outputInvoiceRed.outputInvoices]);
 
   // Confirmation dialog
@@ -351,7 +362,7 @@ const OutputInvoice = () => {
               <CardBody>
                 <Form onSubmit={handleSubmit}>
                   <Row>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Usluga</label>
                         <br></br>
@@ -379,7 +390,7 @@ const OutputInvoice = () => {
                         <p className="error">{formErrors.serviceModel}</p>
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Tip računa</label>
                         <br />
@@ -413,7 +424,7 @@ const OutputInvoice = () => {
                         <p className="error">{formErrors.invoiceType}</p>
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Kupac</label>
                         <br></br>
@@ -445,7 +456,7 @@ const OutputInvoice = () => {
                         <p className="error">{formErrors.customer}</p>
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Broj računa</label>
                         <Input
@@ -483,7 +494,7 @@ const OutputInvoice = () => {
                             }
                           </Row>
                           <Row>
-                            <Col className="pr-1" md="4">
+                            <Col className="pr-1" md="4" sm="6" xs="6">
                               <FormGroup>
                                 <label>Jed. mjera</label>
                                 <br />
@@ -529,7 +540,7 @@ const OutputInvoice = () => {
                                 </p> */}
                               </FormGroup>
                             </Col>
-                            <Col className="pr-1" md="4">
+                            <Col className="pr-1" md="4" sm="6" xs="6">
                               <FormGroup>
                                 <label>Količina</label>
                                 <Input
@@ -571,7 +582,7 @@ const OutputInvoice = () => {
                             </Col>
                           </Row>
                           <Row>
-                            <Col className="pr-1" md="3">
+                            <Col className="pr-1" md="3" sm="6" xs="6">
                               <FormGroup>
                                 <label>Porez. stopa %</label>
                                 <Input
@@ -591,7 +602,7 @@ const OutputInvoice = () => {
                                 </p> */}
                               </FormGroup>
                             </Col>
-                            <Col className="pr-1" md="3">
+                            <Col className="pr-1" md="3" sm="6" xs="6">
                               <FormGroup>
                                 <label>Popust %</label>
                                 <Input
@@ -642,13 +653,13 @@ const OutputInvoice = () => {
                     );
                   })}
                   <Row>
-                    <Col md="2">
+                    <Col md="4">
                       <Button
                         className="rounded-sm"
                         type="button"
                         onClick={handleAddDetailsSection}
                       >
-                        <i className="now-ui-icons ui-1_simple-add" />
+                        Dodaj novu stavku <i className="now-ui-icons ui-1_simple-add" />
                       </Button>
                     </Col>
                   </Row>
@@ -694,7 +705,7 @@ const OutputInvoice = () => {
                     </Col>
                     <Col className="pr-1" md="3">
                       <FormGroup>
-                        <label>Payment due</label>
+                        <label>Rok plaćanja</label>
                         <Input
                           type="date"
                           value={deliveryDate}

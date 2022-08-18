@@ -49,28 +49,31 @@ const App = () => {
             <Route exact path="/">
               <Redirect to="/login" />
             </Route>
-
+            {console.log(history.location)}
             { auth.token ? (
               <Route path="/admin" render={(props) => <Admin {...props} />} />
             ) : (
               <>
+                <Redirect to="/login" />
                 <Route path="/login" component={Login} />
                 <Route path='/register' component={Register}/>
               </>
             
             )}
-            {/* <Redirect to={auth.token ? 
-
-              history.location.pathname === "/login" || history.location.pathname === "/" ? "/admin/dashboard" : history.location.pathname
               
-              : history.location.pathname} /> */}
+              <Redirect push to={
+                auth.token ?
+                (history.location.pathname === "/login" || history.location.pathname === "/register" || history.location.pathname === "/") ? "admin/dashboard"
+                : history.location.pathname
+                : "/login"
+              } />
 
-              <Redirect to={
+              {/* <Redirect to={
                 auth.token ? 
                 (history.location.pathname === "/login" || history.location.pathname === "/register" || history.location.pathname === "/") ? "admin/dashboard"
                 : history.location.pathname
                 : history.location.pathname
-              } />
+              } /> */}
 
           </Switch>
           

@@ -213,7 +213,7 @@ const InputInvoice = () => {
               <CardHeader>
                 <Row>
                   <Col md="12" className="center-custom">
-                    <h5 className="title" id="editAnchor">Izlazni računi</h5>
+                    <h5 className="title" id="editAnchor">Ulazni računi</h5>
                     {isEditedInputInvoice ? (
                       <>
                         <Button
@@ -250,7 +250,7 @@ const InputInvoice = () => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Izdavatelj računa</label>
                         <Input
@@ -263,7 +263,7 @@ const InputInvoice = () => {
                         <p className="error">{formErrors.issuer}</p>
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>OIB</label>
                         <Input
@@ -278,7 +278,7 @@ const InputInvoice = () => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Mjesto</label>
                         <Input
@@ -291,7 +291,7 @@ const InputInvoice = () => {
                         <p className="error">{formErrors.city}</p>
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Adresa</label>
                         <Input
@@ -304,7 +304,7 @@ const InputInvoice = () => {
                         <p className="error">{formErrors.streetAddress}</p>
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Kućni broj</label>
                         <Input
@@ -317,7 +317,7 @@ const InputInvoice = () => {
                         <p className="error">{formErrors.streetNumber}</p>
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Poštanski broj</label>
                         <Input
@@ -347,7 +347,7 @@ const InputInvoice = () => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Porez</label>
                         <Input
@@ -359,7 +359,7 @@ const InputInvoice = () => {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Pretporez</label>
                         <Input
@@ -386,7 +386,7 @@ const InputInvoice = () => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Način plaćanja</label>
                         <br />
@@ -425,7 +425,7 @@ const InputInvoice = () => {
                         <p className="error">{formErrors.paymentMethod}</p>
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Datum računa</label>
                         <Input
@@ -436,7 +436,7 @@ const InputInvoice = () => {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Datum dospijeća</label>
                         <Input
@@ -447,7 +447,7 @@ const InputInvoice = () => {
                         />
                       </FormGroup>
                     </Col>
-                    <Col className="pr-1" md="3">
+                    <Col className="pr-1" md="3" sm="6" xs="6">
                       <FormGroup>
                         <label>Datum uplate</label>
                         <Input
