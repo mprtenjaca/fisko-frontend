@@ -4,9 +4,14 @@ import axios from "services/auth/api/axios.js";
 export const login = (data) => async (dispatch) => {
   const username = data.username;
   const password = data.password;
+
+  const config = {
+    headers: { 'Access-Control-Allow-Origin': "*" },
+  };
+
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-    const res = await axios.post("/login", { username, password });
+    const res = await axios.post("/login", { username, password }, config);
 
     console.log(res.data.access_token)
     dispatch({
