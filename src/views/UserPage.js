@@ -20,8 +20,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateCompany } from "redux/actions/companyAction";
 import notify from "variables/notify";
 import Dialog from "components/FixedPlugin/CustomDialog";
+import { createCompany } from "redux/actions/companyAction";
 
 const User = () => {
+
+  const dispatch = useDispatch();
+  const { auth, companyRed } = useSelector((state) => state);
+
   const initialUserDataState = {
     firstName: "",
     lastName: "",
@@ -33,12 +38,12 @@ const User = () => {
   const initialCompanyDataState = {
     user: null,
     name: "",
-    oib: "",
-    email: "",
+    companyOib: "",
+    companyEmail: "",
     address: "",
     city: "",
     postalCode: "",
-    phoneNumber: "",
+    companyPhoneNumber: "",
     taxRate: 0,
     isVATsystem: false,
     reference: "",
@@ -53,14 +58,13 @@ const User = () => {
 
   const notificationAlert = useRef();
   const [companyData, setCompanyData] = useState(initialCompanyDataState);
+  const [company, setCompany] = useState(initialCompanyDataState);
   const [userData, setUserData] = useState(initialUserDataState);
   const [isUserDisabled, setIsUserDisabled] = useState(true);
   const [isCompanyDisabled, setIsCompanyDisabled] = useState(true);
 
-  //const {firstName, lastName, email, oib, phoneNumber} = userData;
-  //const {name, companyOib, companyEmail, address, city, postalCode, companyPhoneNumber, taxRate, reference, website, customReference} = companyData;
-  const dispatch = useDispatch();
-  const { auth, companyRed } = useSelector((state) => state);
+  const {firstName, lastName, email, oib, phoneNumber} = userData;
+  // const {name, companyOib, companyEmail, address, city, postalCode, companyPhoneNumber, taxRate, isVATsystem, reference, website, customReference} = companyData;
 
   useEffect(() => {
     setCompanyData({ ...companyData, user: auth.user });
@@ -112,18 +116,18 @@ const User = () => {
 
   const handleUserSubmit = (e) => {
     e.preventDefault();
-    dispatch(createComa);
+    // dispatch(createCompany(companyData));
   };
 
   const handleComapnySubmit = (e) => {
     e.preventDefault();
-    dispatch(updateCompany(companyData));
+    companyData.id ? dispatch(updateCompany(companyData)) : dispatch(createCompany(companyData));
     notify("br", "success", notificationAlert);
   };
 
   return (
     <>
-      {/* {console.log(companyRed.company)} */}
+      {console.log(companyData)}
       <ReactNotificationAlert ref={notificationAlert} />
       <PanelHeader size="sm" />
       <div className="content">
@@ -169,6 +173,7 @@ const User = () => {
                           onChange={handleUserChangeInput}
                           value={userData.email}
                           name="email"
+                          disabled={true}
                         />
                       </FormGroup>
                     </Col>
@@ -219,7 +224,7 @@ const User = () => {
           <Col md="12">
             <Card>
               <CardHeader>
-                <h5 className="title">Firma</h5>
+                <h5 className="title">Poduzeće</h5>
                 {/*style={{float: isCompanyDisabled ? "none" : "left"}}*/}
                 {/* {isCompanyDisabled ? <></> : <><i className="now-ui-icons ui-1_simple-remove primary edit-company" onClick={handleEnableComapnyEdit}></i></>} */}
               </CardHeader>
@@ -246,8 +251,8 @@ const User = () => {
                           placeholder="Oib"
                           type="number"
                           onChange={handleCompanyChangeInput}
-                          value={companyData.oib}
-                          name="oib"
+                          value={companyData.companyOib}
+                          name="companyOib"
                           disabled={isCompanyDisabled}
                         />
                       </FormGroup>
@@ -259,8 +264,8 @@ const User = () => {
                           placeholder="E-mail"
                           type="email"
                           onChange={handleCompanyChangeInput}
-                          value={companyData.email}
-                          name="email"
+                          value={companyData.companyEmail}
+                          name="companyEmail"
                           disabled={isCompanyDisabled}
                         />
                       </FormGroup>
@@ -313,8 +318,8 @@ const User = () => {
                           placeholder="Kontakt broj"
                           type="number"
                           onChange={handleCompanyChangeInput}
-                          value={companyData.phoneNumber}
-                          name="phoneNumber"
+                          value={companyData.companyPhoneNumber}
+                          name="companyPhoneNumber"
                           disabled={isCompanyDisabled}
                         />
                       </FormGroup>
@@ -343,7 +348,7 @@ const User = () => {
                           onChange={handleCompanyChangeInput}
                           value={companyData.taxRate}
                           name="taxRate"
-                          disabled={isCompanyDisabled}
+                          disabled={isCompanyDisabled || !companyData.isVATsystem}
                         />
                       </FormGroup>
                     </Col>

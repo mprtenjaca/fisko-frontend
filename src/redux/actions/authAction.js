@@ -6,8 +6,9 @@ export const login = (data) => async (dispatch) => {
   const password = data.password;
 
   const config = {
-    headers: { 'Access-Control-Allow-Origin': "*" },
+    headers: { 'Access-Control-Allow-Origin': '*' },
   };
+  
 
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });

@@ -50,12 +50,14 @@ export const createCompany = (data) => async (dispatch) => {
   };
 
   try {
-    dispatch({ type: COMAPNY_TYPES.LOADING_COMAPNY, payload: { loading: true } });
+    dispatch({ type: COMPANY_TYPES.LOADING_COMPANY, payload: { loading: true } });
 
     const res = await axios.post("/api/company", data, config);
 
+    console.log(res.data)
+
     dispatch({
-      type: COMAPNY_TYPES.CREATE_COMAPNY,
+      type: COMPANY_TYPES.CREATE_COMPANY,
       payload: res.data,
     });
 
