@@ -1,15 +1,15 @@
 import { GLOBALTYPES } from "redux/types/globalTypes";
 import axios from "services/auth/api/axios.js";
 
-export const COMPANY_TYPES = {
-  CREATE_COMPANY: "CREATE_COMPANY",
-  UPDATE_COMPANY: "UPDATE_COMPANY",
-  GET_COMPANY: "GET_COMPANY",
-  DELETE_COMPANY: "DELETE_COMPANY",
-  LOADING_COMPANY: "LOADING_COMPANY",
+export const CUSTOMER_TYPES = {
+  CREATE_CUSTOMER: "CREATE_CUSTOMER",
+  UPDATE_CUSTOMER: "UPDATE_CUSTOMER",
+  GET_CUSTOMERS: "GET_CUSTOMERS",
+  DELETE_CUSTOMER: "DELETE_CUSTOMER",
+  LOADING_CUSTOMERS: "LOADING_CUSTOMERS",
 };
 
-export const getCompany = (auth) => async (dispatch) => {
+export const getCustomers = (auth) => async (dispatch) => {
   const token = localStorage.getItem("tkn_fisco");
 
   const config = {
@@ -17,18 +17,18 @@ export const getCompany = (auth) => async (dispatch) => {
   };
 
   try {
-    dispatch({ type: GLOBALTYPES.ALERT, payload: true });
-    const res = await axios.get("/api/company/admin/" + auth.user.id, config);
+    dispatch({ type: CUSTOMER_TYPES.LOADING_CUSTOMERS, payload: true });
+    const res = await axios.get("/api/customer/admin/" + auth.user.id, config);
 
     dispatch({
-      type: COMPANY_TYPES.GET_COMPANY,
+      type: CUSTOMER_TYPES.GET_CUSTOMERS,
       payload: res.data,
     });
 
     dispatch({
       type: GLOBALTYPES.ALERT,
       payload: {
-        success: "Success!",
+        success: res.data.msg,
       },
     });
   } catch (err) {
@@ -42,7 +42,7 @@ export const getCompany = (auth) => async (dispatch) => {
   }
 };
 
-export const createCompany = (data) => async (dispatch) => {
+export const updateCustomer = (data) => async (dispatch) => {
   const token = localStorage.getItem("tkn_fisco");
 
   const config = {
@@ -50,14 +50,12 @@ export const createCompany = (data) => async (dispatch) => {
   };
 
   try {
-    dispatch({ type: COMPANY_TYPES.LOADING_COMPANY, payload: { loading: true } });
+    dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
 
-    const res = await axios.post("/api/company", data, config);
-
-    console.log(res.data)
+    const res = await axios.put("/api/customer/" + data.id, data, config);
 
     dispatch({
-      type: COMPANY_TYPES.CREATE_COMPANY,
+      type: CUSTOMER_TYPES.UPDATE_CUSTOMER,
       payload: res.data,
     });
 
@@ -71,7 +69,7 @@ export const createCompany = (data) => async (dispatch) => {
   }
 };
 
-export const updateCompany = (data) => async (dispatch) => {
+export const createCustomer = (data) => async (dispatch) => {
   const token = localStorage.getItem("tkn_fisco");
 
   const config = {
@@ -79,16 +77,43 @@ export const updateCompany = (data) => async (dispatch) => {
   };
 
   try {
-    dispatch({ type: COMPANY_TYPES.LOADING_COMPANY, payload: { loading: true } });
+    dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
 
-    const res = await axios.put("/api/company/" + data.id, data, config);
-    
+    const res = await axios.post("/api/customer", data, config);
+
     dispatch({
-      type: COMPANY_TYPES.UPDATE_COMPANY,
+      type: CUSTOMER_TYPES.CREATE_CUSTOMER,
       payload: res.data,
     });
 
     dispatch({ type: GLOBALTYPES.ALERT, payload: { success: res.data.msg } });
+  } catch (err) {
+    console.log(err);
+    dispatch({
+      type: GLOBALTYPES.ALERT,
+      payload: { error: err },
+    });
+  }
+};
+
+export const deleteCustomer = (data) => async (dispatch) => {
+  const token = localStorage.getItem("tkn_fisco");
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+
+  try {
+    dispatch({ type: CUSTOMER_TYPES.LOADING_CUSTOMERS, payload: true });
+
+    const res = await axios.delete("/api/customer/" + data.id, config);
+
+    dispatch({
+      type: CUSTOMER_TYPES.DELETE_CUSTOMER,
+      payload: data.id,
+    });
+
+    dispatch({ type: GLOBALTYPES.ALERT, payload: { success: "Success" } });
   } catch (err) {
     console.log(err);
     dispatch({
