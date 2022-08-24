@@ -707,7 +707,7 @@ const Offer = () => {
                 {/* <CardTitle tag="h4">Ponude</CardTitle> */}
               </CardHeader>
               <CardBody>
-                <Table responsive>
+                <Table responsive className="table-custom">
                   <thead className="text-primary">
                     <tr>
                       {oInvoiceHead.map((prop, key) => {

@@ -48,7 +48,7 @@ function Upgrade() {
                 </p>
               </CardHeader>
               <CardBody>
-                <Table responsive>
+                <Table responsive className="table-custom">
                   <thead>
                     <tr>
                       <th />

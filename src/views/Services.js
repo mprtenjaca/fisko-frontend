@@ -213,7 +213,7 @@ const Services = () => {
                 <CardTitle tag="h4">Usluge</CardTitle>
               </CardHeader>
               <CardBody>
-                <Table responsive>
+                <Table responsive className="table-custom">
                   <thead className="text-primary">
                     <tr>
                       {servicesHead.map((prop, key) => {

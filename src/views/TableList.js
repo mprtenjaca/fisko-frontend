@@ -29,7 +29,7 @@ function RegularTables() {
                 <CardTitle tag="h4">Simple Table</CardTitle>
               </CardHeader>
               <CardBody>
-                <Table responsive>
+                <Table responsive className="table-custom">
                   <thead className="text-primary">
                     <tr>
                       {thead.map((prop, key) => {
@@ -71,7 +71,7 @@ function RegularTables() {
                 <p className="category"> Here is a subtitle for this table</p>
               </CardHeader>
               <CardBody>
-                <Table responsive>
+                <Table responsive className="table-custom">
                   <thead className="text-primary">
                     <tr>
                       {thead.map((prop, key) => {
