@@ -157,9 +157,8 @@ const Register = () => {
                   </div>
                   <p className="text-center mt-5">
                     Već imaš profil?
-                    <Link to="/register">Prijavi se</Link>
+                    <Link to="/login">Prijavi se</Link>
                   </p>
-                  {/* <p className="text-center text-info">Forgot your password?</p> */}
                 </div>
               </form>
             </div>

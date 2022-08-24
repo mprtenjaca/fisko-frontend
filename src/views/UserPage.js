@@ -36,7 +36,7 @@ const User = () => {
   };
 
   const initialCompanyDataState = {
-    user: null,
+    user: auth.user,
     name: "",
     companyOib: "",
     companyEmail: "",
@@ -67,8 +67,12 @@ const User = () => {
   // const {name, companyOib, companyEmail, address, city, postalCode, companyPhoneNumber, taxRate, isVATsystem, reference, website, customReference} = companyData;
 
   useEffect(() => {
-    setCompanyData({ ...companyData, user: auth.user });
-    setCompanyData(companyRed.company);
+
+    if(companyRed.company.id){
+      setCompanyData(companyRed.company);
+    }else{
+      setCompanyData({ ...companyData, user: auth.user });
+    }
     setUserData(auth.user);
   }, [auth.user, companyRed.company]);
 
@@ -100,6 +104,7 @@ const User = () => {
   const handleUserChangeInput = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
+    console.log(userData);
   };
 
   const handleCompanyChangeInput = (e) => {
@@ -110,7 +115,7 @@ const User = () => {
     }else{
       setCompanyData({ ...companyData, [name]: value });
     }
-    
+    console.log(companyData);
   };
 
   const handleUserSubmit = (e) => {
@@ -126,6 +131,8 @@ const User = () => {
 
   return (
     <>
+      {console.log(companyData)}
+      {console.log(companyRed.company)}
       <ReactNotificationAlert ref={notificationAlert} />
       <PanelHeader size="sm" />
       <div className="content">

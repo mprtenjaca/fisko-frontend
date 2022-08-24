@@ -345,7 +345,7 @@ const OutputInvoice = () => {
                           type="button"
                           onClick={handleNewOutputInvoiceAction}
                         >
-                          Add new
+                          Dodaj novi račun
                         </Button>
                         <Button type="button" onClick={handleViewPDF}>
                           PDF

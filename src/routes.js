@@ -15,7 +15,7 @@ import Offer from "views/Offer";
 var dashRoutes = [
   {
     path: "/dashboard",
-    name: "Dashboard",
+    name: "Kontrolna ploča",
     icon: "design_app",
     component: Dashboard,
     layout: "/admin",
