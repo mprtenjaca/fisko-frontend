@@ -138,6 +138,8 @@ const PDFFileView = (props) => {
                             </p>
                           ) 
                         }
+                        <p className="eurRateMessage">Prikazane cijene preračunate su po fiksnom tečaju konverzije 1 EUR = 7,53450 HRK</p>
+
                        
                       </div>
                     </div>
