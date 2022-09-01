@@ -43,7 +43,7 @@ var dashRoutes = [
   },
   {
     path: "/customers",
-    name: "Kupci",
+    name: "Klijenti",
     icon: "users_single-02",
     component: Customers,
     layout: "/admin",

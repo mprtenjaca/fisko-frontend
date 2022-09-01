@@ -1,4 +1,4 @@
-const notify = (place, type, notificationAlert) => {
+const notify = (place, type, notificationAlert, message) => {
     var options = {};
     
     options = {
@@ -6,13 +6,13 @@ const notify = (place, type, notificationAlert) => {
       message: (
         <div>
           <div>
-            {type === "success" ? "Success!" : "Error!"}
+            {type === "success" ? "Success!" : message}
           </div>
         </div>
       ),
       type: type,
       icon: "now-ui-icons ui-1_bell-53",
-      autoDismiss: 7,
+      autoDismiss: 5,
     };
     notificationAlert.current.notificationAlert(options);
 };

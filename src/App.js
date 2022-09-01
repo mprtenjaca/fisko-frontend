@@ -61,7 +61,7 @@ const App = () => {
             )}
               
               <Redirect push to={
-                auth.token ?
+                localStorage.getItem("tkn_fisco") || auth.token ?
                 (history.location.pathname === "/login" || history.location.pathname === "/register" || history.location.pathname === "/") ? "admin/dashboard"
                 : history.location.pathname
                 : "/login"

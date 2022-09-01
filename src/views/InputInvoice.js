@@ -502,7 +502,7 @@ const InputInvoice = () => {
           <Col xs={12}>
             <Card className="card-plain">
               <CardHeader>
-                <CardTitle tag="h4">Izlazni računi</CardTitle>
+                {/* <CardTitle tag="h4">Izlazni računi</CardTitle> */}
               </CardHeader>
               <CardBody>
                 <Table responsive className="table-custom">

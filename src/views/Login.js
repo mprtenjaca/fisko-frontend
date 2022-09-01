@@ -17,7 +17,7 @@ import {
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
 import { useDispatch } from "react-redux";
 import { login } from "redux/actions/authAction";
-import NotificationAlert from "react-notification-alert";
+import ReactNotificationAlert from "react-notification-alert";
 import "assets/css/login.css";
 import notify from "variables/notify";
 import { Link } from "react-router-dom";
@@ -30,6 +30,7 @@ const Login = () => {
     password: "",
   };
 
+  const notificationAlert = useRef();
   const userRef = useRef();
   const errRef = useRef();
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const Login = () => {
     userRef.current;
   }, []);
   useEffect(() => {
-    setErrMsg("");
+    setErrMsg("WRF");
   }, [username, password]);
 
   const handleChangeInput = (e) => {
@@ -56,14 +57,18 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(login(loginData));
+    dispatch(login(loginData, {setSuccess}));
     setLoginData(initialLoginState);
-    setSuccess(true);
+    if(!success){
+      notify("br", "danger", notificationAlert, "Login Failed: Incorrect email or password");
+    }
+    
   };
 
   return (
     <>
-      <div className="container-fluid vh-100">
+      <ReactNotificationAlert  ref={notificationAlert}/>
+      <div className="container-fluid">
         <div className="">
           <div className="rounded d-flex justify-content-center loginCenter">
             <div className="col-lg-4 col-md-6 col-sm-12 shadow-lg p-5 bg-light">

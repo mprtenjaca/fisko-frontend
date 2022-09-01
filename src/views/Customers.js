@@ -156,7 +156,7 @@ const Customers = () => {
               <CardHeader>
                 <Row>
                   <Col md="12" className="center-custom">
-                    <h5 className="title" id="editAnchor">Kupci</h5>
+                    <h5 className="title" id="editAnchor">Klijenti</h5>
                     {isEditedCustomer ? (
                       <Button
                         variant="info"
@@ -351,7 +351,7 @@ const Customers = () => {
           <Col xs={12}>
             <Card className="card-plain">
               <CardHeader>
-                <CardTitle tag="h4">Customers</CardTitle>
+                <CardTitle tag="h4">Popis klijenata</CardTitle>
               </CardHeader>
               <CardBody>
                 <Table responsive className="table-custom">
@@ -367,7 +367,7 @@ const Customers = () => {
                       return (
                         <tr key={data.id} onClick={handleCustomerEdit(data)} style={{cursor: "pointer"}}>
                           <td>
-                            {data.firstName} {data.lastName}
+                            {data.companyName ? data.companyName : data.firstName  + " " + data.lastName}
                           </td>
                           <td>{data.address} kn</td>
                           <td>{data.phoneNumber}</td>

@@ -1,31 +1,43 @@
 import { GLOBALTYPES } from "redux/types/globalTypes";
 import axios from "services/auth/api/axios.js";
 
-export const login = (data) => async (dispatch) => {
+export const login = (data, {setSuccess}) => async (dispatch) => {
   const username = data.username;
   const password = data.password;
-
+  
   try {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
     const res = await axios.post("/login", { username, password });
 
-    // console.log(res.data.access_token)
-    dispatch({
-      type: GLOBALTYPES.AUTH,
-      payload: {
-        token: res.data.access_token,
-        user: res.data.user,
-      },
-    });
+    if(res.data.access_token){
+      dispatch({
+        type: GLOBALTYPES.AUTH,
+        payload: {
+          token: res.data.access_token,
+          user: res.data.user,
+        },
+      });
 
-    localStorage.setItem("login", true);
-    localStorage.setItem("tkn_fisco", res.data.access_token);
-    dispatch({
-      type: GLOBALTYPES.ALERT,
-      payload: {
-        success: "Success!",
-      },
-    });
+      localStorage.setItem("login", true);
+      localStorage.setItem("tkn_fisco", res.data.access_token);
+      setSuccess(true)
+      
+      dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: {
+          success: "Success!",
+        },
+      });
+    }{
+      dispatch({
+        type: GLOBALTYPES.ALERT,
+        payload: {
+          error: "Login failed!",
+        },
+      });
+    }
+
+    
   } catch (err) {
     dispatch({
       type: GLOBALTYPES.ALERT,
