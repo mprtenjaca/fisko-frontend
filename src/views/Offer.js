@@ -34,6 +34,7 @@ import { updateOffer } from "redux/actions/offerAction";
 import { createOffer } from "redux/actions/offerAction";
 import { deleteOffer } from "redux/actions/offerAction";
 import { offerValidation } from "components/Validation/ValidateValues";
+import { hrkToEur } from "components/Util/Util";
 
 const Offer = () => {
   const dispatch = useDispatch();
@@ -665,13 +666,7 @@ const Offer = () => {
                     <Col className="pr-1" md="3">
                       <FormGroup>
                         <label>Ukupno</label>
-                        <h3>{finalPrice} kn</h3>
-                        {/* <Input
-                          disabled
-                          type="number"
-                          value={finalPrice}
-                          name="finalPrice"
-                        /> */}
+                        <h3>{finalPrice} kn / {hrkToEur(finalPrice)} €</h3>
                       </FormGroup>
                     </Col>
                   </Row>

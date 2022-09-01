@@ -29,6 +29,7 @@ export const measureUnits = [
 export const paymentMethods = [
     { value: "GOTOVINA" },
     { value: "KARTICA" },
+    { value: "TRANSAKCIJSKI_RAČUN" },
     { value: "ČEK" },
     { value: "OSTALO" },
 ];
@@ -79,3 +80,9 @@ export const handleFinalPriceValue = (list, index) => {
 
     return finalPrice;
 }
+
+export const hrkToEur = (hrkValue) => {
+
+  const eur = Number(hrkValue) / Number(7.53450)
+  return eur.toFixed(2);
+} 

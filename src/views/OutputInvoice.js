@@ -28,7 +28,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateOutputInvoice } from "redux/actions/outputInvoiceAction";
 import { createOutputInvoice } from "redux/actions/outputInvoiceAction";
 import { deleteOutputInvoice } from "redux/actions/outputInvoiceAction";
-import { invoiceTypes, measureUnits, paymentMethods } from "components/Util/Util";
+import { invoiceTypes, measureUnits, paymentMethods, hrkToEur } from "components/Util/Util";
 import { useHistory } from "react-router-dom";
 import Dialog from "components/FixedPlugin/CustomDialog";
 import ReactNotificationAlert from "react-notification-alert";
@@ -328,6 +328,7 @@ const OutputInvoice = () => {
 
   return (
     <>
+      {console.log(outputInvoiceData)}
       <ReactNotificationAlert  ref={notificationAlert}/>
       <PanelHeader size="sm" />
       <div className="content" >
@@ -440,13 +441,13 @@ const OutputInvoice = () => {
                                   key={customer.id}
                                   value={index}
                                 >
-                                  {customer.firstName} {customer.lastName}
+                                  {customer.companyName ? customer.companyName : customer.firstName  + " " + customer.lastName}
                                 </option>
                               );
                             }
                             return (
                               <option key={customer.id} value={index}>
-                                {customer.firstName} {customer.lastName}
+                                {customer.companyName ? customer.companyName : customer.firstName  + " " + customer.lastName}
                               </option>
                             );
                           })}
@@ -716,13 +717,7 @@ const OutputInvoice = () => {
                     <Col className="pr-1" md="3">
                       <FormGroup>
                         <label>Ukupno</label>
-                        <h3>{finalPrice} kn</h3>
-                        {/* <Input
-                          disabled
-                          type="number"
-                          value={finalPrice}
-                          name="finalPrice"
-                        /> */}
+                        <h3>{finalPrice} kn / {hrkToEur(finalPrice)} €</h3>
                       </FormGroup>
                     </Col>
                   </Row>
@@ -776,7 +771,7 @@ const OutputInvoice = () => {
                         >
                           <td>{data.invoiceNumber}</td>
                           <td>
-                            {data.customer.firstName} {data.customer.lastName}
+                            {data.customer.companyName ? data.customer.companyName : data.customer.firstName  + " " + data.customer.lastName}
                           </td>
                           <td>{data.finalPrice} kn</td>
                           <td>{data.dateAndTime}</td>

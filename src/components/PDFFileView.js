@@ -5,13 +5,14 @@ import "assets/css/fisco-pdf.css";
 
 import NotificationAlert from "react-notification-alert";
 import PanelHeader from "components/PanelHeader/PanelHeader.js";
+import { hrkToEur } from "components/Util/Util.js";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCompany } from "redux/actions/companyAction";
 import notify from "variables/notify";
 import img from "../assets/img/Blic_Main_Logo.png";
 import ReactToPrint from "react-to-print";
-import { Card, CardBody, CardHeader, Col, Row, Table } from "reactstrap";
+import { Card, CardBody, CardHeader, Col, Row, Table, Util } from "reactstrap";
 import { useHistory } from "react-router-dom";
 
 const PDFFileView = (props) => {
@@ -40,8 +41,7 @@ const PDFFileView = (props) => {
                   <CardBody className="all-icons">
                     <div>
                       <div className="pdfHeader">
-                        <img src={img} />
-                        <h2>Račun br. 66555</h2>
+                        <h2>Račun broj: {props.location.state.invoice.invoiceNumber}</h2>
                       </div>
 
                       <hr />
@@ -51,7 +51,8 @@ const PDFFileView = (props) => {
                           <p className="bold">{companyRed.company.name}</p>
                           <p>{companyRed.company.address} {companyRed.company.postalCode}</p>
                           <p>{companyRed.company.postalCode}, {companyRed.company.city}</p>
-                          <p className="bold">OIB: {companyRed.company.oib}</p>
+                          <p className="bold">OIB: {companyRed.company.companyOib}</p>
+
                         </div>
                         <div className="reciever">
                           <p className="bold">
@@ -111,7 +112,7 @@ const PDFFileView = (props) => {
                         <div className="pdfFinalPrice">
                           <h5>
                             Ukupan iznos računa:{" "}
-                            {props.location.state.invoice.finalPrice} kn
+                            {props.location.state.invoice.finalPrice} kn / {hrkToEur(props.location.state.invoice.finalPrice)} €
                           </h5>
                         </div>
                       </div>
@@ -125,6 +126,19 @@ const PDFFileView = (props) => {
                           <strong>Rok plaćanja:</strong>{" "}
                           {props.location.state.invoice.deliveryDate}
                         </p>
+
+                        <br/>      
+                        {
+                          companyRed.company.isVATsystem ? 
+                          <></> : 
+                          (
+                            <p>
+                            <strong>NAPOMENA:</strong>{" "}
+                            <strong>Oslobođeno plaćanaj PDV-a temeljem odredbe članka 90. stavka 2. Zakona o porezu na dodanu vrijednost (NN 73/13)</strong>
+                            </p>
+                          ) 
+                        }
+                       
                       </div>
                     </div>
                   </CardBody>
