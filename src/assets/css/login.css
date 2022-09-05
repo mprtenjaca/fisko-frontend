@@ -1,3 +1,9 @@
 .loginCenter {
     margin-top: 200px;
 }
+
+@media screen and (max-width: 600px) {
+    .loginCenter {
+        margin-top: 100px;
+    }
+  }
