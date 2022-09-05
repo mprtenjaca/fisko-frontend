@@ -21,6 +21,7 @@ import { updateCompany } from "redux/actions/companyAction";
 import notify from "variables/notify";
 import Dialog from "components/FixedPlugin/CustomDialog";
 import { createCompany } from "redux/actions/companyAction";
+import { updateUser } from "redux/actions/profileAction";
 
 const User = () => {
 
@@ -89,7 +90,6 @@ const User = () => {
 
   const handleConfirmation = (choose) => {
     if (choose) {
-      //ACTION
       handleDialog("", false);
     } else {
       handleDialog("", false);
@@ -104,7 +104,6 @@ const User = () => {
   const handleUserChangeInput = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
-    console.log(userData);
   };
 
   const handleCompanyChangeInput = (e) => {
@@ -115,12 +114,12 @@ const User = () => {
     }else{
       setCompanyData({ ...companyData, [name]: value });
     }
-    console.log(companyData);
   };
 
   const handleUserSubmit = (e) => {
     e.preventDefault();
-    // dispatch(createCompany(companyData));
+    dispatch(updateUser(userData, auth));
+    notify("br", "success", notificationAlert);
   };
 
   const handleComapnySubmit = (e) => {
@@ -131,8 +130,6 @@ const User = () => {
 
   return (
     <>
-      {console.log(companyData)}
-      {console.log(companyRed.company)}
       <ReactNotificationAlert ref={notificationAlert} />
       <PanelHeader size="sm" />
       <div className="content">

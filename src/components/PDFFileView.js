@@ -21,6 +21,12 @@ const PDFFileView = (props) => {
 
   const { companyRed} = useSelector((state) => state);
 
+  useEffect(() => {
+
+    document.getElementById("download-pdf").click()
+    history.push("/admin/output-invoice");
+  })
+
   const checkForProps = () => {
 
     if (!props.location.state) {
@@ -30,9 +36,8 @@ const PDFFileView = (props) => {
 
   return (
     <>
-      {checkForProps()}
       <PanelHeader size="sm" />
-      <div>
+      <div style={{visibility: "hidden"}}>
         <div className="content">
           <div ref={componentRef}>
             <Row>
@@ -150,7 +155,7 @@ const PDFFileView = (props) => {
           </div>
           <ReactToPrint
             trigger={() => {
-              return <Button type="button">DOWNLOAD PDF</Button>;
+              return <Button type="button" className="download-pdf" id="download-pdf">DOWNLOAD PDF</Button>;
             }}
             content={() => componentRef.current}
           />

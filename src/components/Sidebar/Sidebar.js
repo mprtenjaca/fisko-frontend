@@ -44,7 +44,7 @@ function Sidebar(props) {
           href="#"
           className="simple-text logo-normal"
         >
-          FISCO - FISCAL
+          FISCO
         </a>
       </div>
       <div className="sidebar-wrapper" ref={sidebar}>

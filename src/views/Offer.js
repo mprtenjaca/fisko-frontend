@@ -318,9 +318,9 @@ const Offer = () => {
                         >
                           Dodaj novu ponudu
                         </Button>
-                        <Button type="button" onClick={handleViewPDF}>
+                        {/* <Button type="button" onClick={handleViewPDF}>
                           PDF
-                        </Button>
+                        </Button> */}
                       </>
                     ) : (
                       <></>

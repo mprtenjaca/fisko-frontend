@@ -17,3 +17,9 @@
 .pdfDetails .bold {
     font-weight: bold;
 }
+
+.eurRateMessage{
+  font-size: 12px;
+  text-align: center;
+  color: #a1a1a1;
+}
