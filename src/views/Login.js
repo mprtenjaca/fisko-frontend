@@ -95,7 +95,7 @@ const Login = () => {
                       <i className="bi bi-key-fill text-white"></i>
                     </span>
                     <input
-                      type="text"
+                      type="password"
                       className="form-control"
                       placeholder="Password"
                       name="password"
