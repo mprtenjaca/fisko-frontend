@@ -57,11 +57,8 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(login(loginData, {setSuccess}));
+    dispatch(login(loginData, {success}, {setSuccess}, {notificationAlert}));
     setLoginData(initialLoginState);
-    if(!success){
-      notify("br", "danger", notificationAlert, "Login Failed: Incorrect email or password");
-    }
     
   };
 
@@ -95,7 +92,7 @@ const Login = () => {
                       <i className="bi bi-key-fill text-white"></i>
                     </span>
                     <input
-                      type="password"
+                      type="text"
                       className="form-control"
                       placeholder="Password"
                       name="password"

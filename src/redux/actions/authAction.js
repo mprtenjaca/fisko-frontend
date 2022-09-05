@@ -1,52 +1,57 @@
 import { GLOBALTYPES } from "redux/types/globalTypes";
 import axios from "services/auth/api/axios.js";
+import notify from "variables/notify";
 
-export const login = (data, {setSuccess}) => async (dispatch) => {
-  const username = data.username;
-  const password = data.password;
-  
-  try {
-    dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
-    const res = await axios.post("/login", { username, password });
+export const login =
+  (data, { success }, { setSuccess }, { notificationAlert }) =>
+  async (dispatch) => {
+    const username = data.username;
+    const password = data.password;
+    console.log(notificationAlert);
+    console.log(success);
+    try {
+      dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
+      const res = await axios.post("/login", { username, password });
 
-    if(res.data.access_token){
-      dispatch({
-        type: GLOBALTYPES.AUTH,
-        payload: {
-          token: res.data.access_token,
-          user: res.data.user,
-        },
-      });
+      if (res.data.access_token) {
+        dispatch({
+          type: GLOBALTYPES.AUTH,
+          payload: {
+            token: res.data.access_token,
+            user: res.data.user,
+          },
+        });
 
-      localStorage.setItem("login", true);
-      localStorage.setItem("tkn_fisco", res.data.access_token);
-      setSuccess(true)
-      
+        localStorage.setItem("login", true);
+        localStorage.setItem("tkn_fisco", res.data.access_token);
+        setSuccess(true);
+
+        dispatch({
+          type: GLOBALTYPES.ALERT,
+          payload: {
+            success: "Success!",
+          },
+        });
+      }else{
+        notify("br", "danger", notificationAlert, "Login Failed: Incorrect email or password");
+      }
+      {
+        dispatch({
+          type: GLOBALTYPES.ALERT,
+          payload: {
+            error: "Login failed!",
+          },
+        });
+      }
+    } catch (err) {
       dispatch({
         type: GLOBALTYPES.ALERT,
         payload: {
-          success: "Success!",
-        },
-      });
-    }{
-      dispatch({
-        type: GLOBALTYPES.ALERT,
-        payload: {
-          error: "Login failed!",
+          error: err,
         },
       });
     }
-
-    
-  } catch (err) {
-    dispatch({
-      type: GLOBALTYPES.ALERT,
-      payload: {
-        error: err,
-      },
-    });
-  }
-};
+  };
 
 export const register = (data) => async (dispatch) => {
   try {
@@ -81,7 +86,7 @@ export const refreshToken = () => async (dispatch) => {
     dispatch({ type: GLOBALTYPES.ALERT, payload: { loading: true } });
     try {
       const res = await axios.get("/auth/token/refresh", config);
-      
+
       dispatch({
         type: GLOBALTYPES.AUTH,
         payload: {
